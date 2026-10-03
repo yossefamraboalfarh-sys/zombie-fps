@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bwoxpox31uews"]
+
+[ext_resource type="Script" uid="uid://dydi7cd1hs0eb" path="res://assets/Player/player.gd" id="1_xg5j1"]
+[ext_resource type="Script" uid="uid://w4v7h4yfokbo" path="res://assets/Player/canvas_layer.gd" id="2_7gujn"]
+[ext_resource type="PackedScene" uid="uid://cv86krh65iao8" path="res://assets/Player/Gun.tscn" id="2_qm3y6"]
+[ext_resource type="Script" uid="uid://db0x5dq3hdp6n" path="res://assets/Player/ability_system.gd" id="4_hvr4l"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2a2cq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2a2cq"]
+
+[node name="player" type="CharacterBody3D" unique_id=1480363069]
+script = ExtResource("1_xg5j1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1973831776]
+mesh = SubResource("CapsuleMesh_2a2cq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=227814481]
+shape = SubResource("CapsuleShape3D_2a2cq")
+
+[node name="head" type="Node3D" parent="." unique_id=1660241478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head" unique_id=488150423]
+current = true
+
+[node name="Gun" parent="head/Camera3D" unique_id=2084859759 instance=ExtResource("2_qm3y6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53918284, -0.19159794, -0.521827)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=762956431]
+script = ExtResource("2_7gujn")
+
+[node name="AbilitySystem" type="Node" parent="." unique_id=418162083]
+script = ExtResource("4_hvr4l")
